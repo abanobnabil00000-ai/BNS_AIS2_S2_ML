@@ -1,18 +1,21 @@
 class Person:
     """Base class for all people in the hospital."""
-    def __init__(self, name, age):
+    def __init__(self, name, age,phone):
         self.name = name
         self.age = age
+        self.phone = phone
 
     def view_info(self):
         """View basic information about the person."""
-        return f"Name: {self.name}, Age: {self.age}"
+        return f"Name: {self.name}, Age: {self.age}, Phone: {self.phone}"
 
 
 class Patient(Person):
     """Class for hospital patients, inheriting from Person."""
-    def __init__(self, name, age, medical_record):
-        super().__init__(name, age)
+    def __init__(self, name, age, phone, ID, ailment, medical_record):
+        super().__init__(name, age,phone)
+        self.ID = ID
+        self.ailment = ailment
         self.medical_record = medical_record
 
     def view_record(self):
@@ -33,9 +36,9 @@ class Staff(Person):
 
 class Hospital:
     """Class for managing hospital operations."""
-    def __init__(self, name, location):
-        self.name = name
-        self.location = location
+    def __init__(self):
+        self.name = input("Inter Hospital name : ")
+        self.location = input("Inter Hospital location: ")
         self.departments = []  # List to hold departments
 
     def add_department(self, department):
@@ -62,18 +65,5 @@ class Department:
         print(f"Staff '{staff_member.name}' added to {self.name} department.")
 
 
-
-
-# person_1 = Person("abanob",20)
-# print(person_1.view_info())
-
-# patient1 = Patient("Alice", 30, "No known allergies")
-
-# print(patient1.view_info())
-# print(patient1.view_record())
-
-# doctor1 = Staff("Dr. Smith", 45, "Cardiologist")
-
-# print(doctor1.view_info())
 
 
